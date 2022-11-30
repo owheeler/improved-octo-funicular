@@ -4,6 +4,8 @@ format: html
 editor: visual
 ---
 
+😂
+
 ### 1. Get Data
 
 ```{r}

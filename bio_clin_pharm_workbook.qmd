@@ -1,0 +1,41 @@
+---
+title: "Q-doc 1"
+format: html
+editor: visual
+---
+
+### 1. Get Data
+
+```{r}
+
+library(haven)
+library(DT)
+adae <- read_sas("https://github.com/elong0527/r4csr/raw/master/data-adam/adae.sas7bdat", 
+    NULL)
+
+datatable(adae)
+```
+
+### 2. Visualize the Data
+
+```{r}
+library(ggplot2)
+ggplot(adae) +
+  aes(x = AESLIFE, y = AGE, fill = RACE) +
+  geom_violin(adjust = 1L, scale = "area") +
+  scale_fill_hue(direction = 1) +
+  theme_minimal()
+```
+
+### 3. Make it Interactive!
+
+```{r}
+library(plotly)
+dv1 <- ggplot(adae) +
+  aes(x = AESLIFE, y = AGE, fill = RACE) +
+  geom_violin(adjust = 1L, scale = "area") +
+  scale_fill_hue(direction = 1) +
+  theme_minimal()
+
+ggplotly(dv1)
+```
